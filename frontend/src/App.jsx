@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import './App.scss';
 import Form from './components/Form';
 import List from './components/List';
-import { v4 } from 'uuid';
-import Item from './components/Item';
 
 function App() {
   const [todos, setTodos] = useState([]);

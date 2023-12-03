@@ -5,26 +5,10 @@ export default function Item({ todo, fetchData }) {
   // --- D O N E ---
   const [done, setDone] = useState(todo.done);
 
-  const changeDone = (id, done) => {
-    // Hier rufst du die Funktion auf, um den Status zu aktualisieren
-    fetch(`http://localhost:9898/api/todos/${id}`, {
-      method: 'PATCH', // Du könntest auch PUT verwenden, abhängig von deiner API
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ done }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(() => {
-        fetchTodos();
-      })
-      .catch((error) => console.error('Error updating todo:', error));
-  };
+  // const changeDone = (id) => {
+  // Methode um den Status von done auf true zu setzen im Backend fehlt noch
+
+  // };
 
   const handleDone = () => {
     todo.done = !todo.done;
@@ -41,7 +25,7 @@ export default function Item({ todo, fetchData }) {
       },
       body: JSON.stringify({ id: todo.id }),
     })
-      // .then((response) => response.json()) // ? warum json
+      // .then((response) => response.json()) // ? warum hatte ich hier json
       .then((response) =>
         response.ok ? console.log('delete ok') : console.log('delete not ok')
       )
@@ -57,6 +41,7 @@ export default function Item({ todo, fetchData }) {
   return (
     <section onClick={handleDone} className={'todo-item ' + todo.prio}>
       <div className='category'>😫</div>
+      {/* es gibt noch keine Kategorien */}
       <div className={'item-container '}>
         <p className={'task-name ' + (todo.done ? 'line-through' : '')}>
           {todo.task}
