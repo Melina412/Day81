@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: rgb(40, 38, 44);
+}
+
+div#root {
+  margin: 50px;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  margin: 10px 0 30px 0;
+  color: lavender;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+section.todo-form {
+  margin-bottom: 30px;
+  input {
+    font-size: 18px;
+    padding: 5px;
+    background-color: lavender;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+section.todo-item {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  width: 400px;
+  background-color: lavender;
+  margin: 10px 0;
+  border-radius: 5px;
+
+  &.c {
+    background-color: skyblue;
+  }
+  &.b {
+    background-color: peachpuff;
+  }
+  &.a {
+    background-color: palevioletred;
+  }
+
+  div.category {
+    text-align: center;
+    align-self: center;
+    padding: 2px;
+    font-size: 22px;
+  }
+
+  div.item-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 0;
+
+    p {
+      font-size: 20px;
+      text-align: center;
+      color: black;
+    }
+  }
+  .delete-button {
+    background-color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+section.todo-list {
+  h4 {
+    color: lavender;
+    margin: 10px 0;
+  }
+  p {
+    color: lavender;
+    margin: 5px;
+  }
+}
