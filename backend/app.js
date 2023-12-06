@@ -6,6 +6,7 @@ import {
   getTodoList,
   deleteTodo,
   findFile,
+  editItem,
 } from './utils/files.js';
 
 const PORT = 9898;
@@ -42,12 +43,29 @@ app.delete('/api/todos', (req, res) => {
     .catch((error) => res.status(500).end('fehler beim löschen', error));
 });
 
-// app.put('/api/todos', (req, res) => {
-//   const id = req.body.id;
-//   const done = req.body.done;
-//   findFile(id)
-//   .then()
-// });
-// kein Plan wie man done auf true setzen soll
+// allgemeine änderungen
+app.put('/api/todos', (req, res) => {
+  console.log('id:', req.body.id);
+  console.log('body:', req.body);
+  console.log('done:', req.body.done);
+  editItem(req.body)
+    .then(() => res.end('item status wurde geändert'))
+    .catch((error) => {
+      console.log(error);
+      res.status(500).end('message');
+    });
+});
+
+// - setzt automatisch done auf true/false
+app.put('/api/todos/done', (req, res) => {
+  console.log('body:', req.body);
+  req.body.done = !req.body.done;
+  editItem(req.body)
+    .then(() => res.end('item status wurde geändert'))
+    .catch((error) => {
+      console.log(error);
+      res.status(500).end('item konnte nicht geändert werden');
+    });
+});
 
 app.listen(PORT, () => console.log('express läuft auf port', PORT));

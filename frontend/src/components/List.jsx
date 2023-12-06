@@ -1,11 +1,7 @@
 // $ ==================== L I S T ==================== //
-import { useState, useEffect } from 'react';
 import Item from './Item';
-import { v4 } from 'uuid';
 
 export default function List({ todos, fetchData }) {
-  console.log('liste props:', todos);
-
   return (
     <section className='todo-list'>
       <div>
@@ -19,8 +15,8 @@ export default function List({ todos, fetchData }) {
         Enter drückt
       </p>
       <p>
-        // wenn man auf das Todo klickt, kann man es als erledigt markieren
-        (funktioniert bisher leider nur im Front-end)
+        // wenn man auf das Todo klickt, kann man es als erledigt markieren.
+        Funktioniert jetzt auch im Backend :)
       </p>
       <p>
         // wenn ein Todo als erledigt markiert ist, erscheint ein Button mit dem

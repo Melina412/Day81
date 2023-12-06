@@ -31,10 +31,19 @@ export function deleteTodo(id) {
   return fs.rm('./storage/' + id);
 }
 
+// einen eintrag finden
 export function findFile(id) {
-  const filePath = `./storage/${id}`;
   return fs
-    .readFile(filePath, 'utf8')
+    .readFile('./storage/' + id, 'utf8')
     .then((data) => JSON.parse(data))
     .catch((error) => console.log('datei nicht gefunden', error));
+}
+
+//
+export function editItem(item) {
+  return findFile(item.id)
+    .then((database_item) => (database_item = { ...database_item, ...item }))
+    .then((new_item) =>
+      fs.writeFile('./storage/' + new_item.id, JSON.stringify(new_item))
+    );
 }

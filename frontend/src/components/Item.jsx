@@ -5,14 +5,29 @@ export default function Item({ todo, fetchData }) {
   // --- D O N E ---
   const [done, setDone] = useState(todo.done);
 
-  // const changeDone = (id) => {
-  // Methode um den Status von done auf true zu setzen im Backend fehlt noch
-
-  // };
+  const changeDone = () => {
+    fetch(`http://localhost:9898/api/todos/done`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: todo.id, done: todo.done }),
+    })
+      .then((response) =>
+        response.ok
+          ? console.log('done status changed')
+          : console.log('done change ERROR')
+      )
+      // ? wie kann man sich den response/preview von dem delete in der konsole anzeigen lassen
+      .then(() => fetchData())
+      .catch((error) => console.error(error));
+  };
 
   const handleDone = () => {
+    changeDone();
     todo.done = !todo.done;
     setDone(todo.done);
+    console.log({ done });
   };
 
   // --- D E L E T E ---

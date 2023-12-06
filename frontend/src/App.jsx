@@ -15,7 +15,7 @@ function App() {
     fetch('http://localhost:9898/api/todos')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         return setTodos(data);
       })
       .catch((error) => console.error(error));
