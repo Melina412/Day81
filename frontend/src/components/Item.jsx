@@ -18,7 +18,6 @@ export default function Item({ todo, fetchData }) {
           ? console.log('done status changed')
           : console.log('done change ERROR')
       )
-      // ? wie kann man sich den response/preview von dem delete in der konsole anzeigen lassen
       .then(() => fetchData())
       .catch((error) => console.error(error));
   };
@@ -27,7 +26,6 @@ export default function Item({ todo, fetchData }) {
     changeDone();
     todo.done = !todo.done;
     setDone(todo.done);
-    console.log({ done });
   };
 
   // --- D E L E T E ---
@@ -42,7 +40,7 @@ export default function Item({ todo, fetchData }) {
     })
       // .then((response) => response.json()) // ? warum hatte ich hier json
       .then((response) =>
-        response.ok ? console.log('delete ok') : console.log('delete not ok')
+        response.ok ? console.log('item deleted') : console.log('delete ERROR')
       )
       // ? wie kann man sich den response/preview von dem delete in der konsole anzeigen lassen
       .then(() => fetchData())
@@ -55,12 +53,10 @@ export default function Item({ todo, fetchData }) {
 
   return (
     <section onClick={handleDone} className={'todo-item ' + todo.prio}>
-      <div className='category'>😫</div>
+      <div className='category'>{todo.category}</div>
       {/* es gibt noch keine Kategorien */}
       <div className={'item-container '}>
-        <p className={'task-name ' + (todo.done ? 'line-through' : '')}>
-          {todo.task}
-        </p>
+        <p className={'task-name ' + (todo.done ? 'done' : '')}>{todo.task}</p>
         {/* <p>{todo.id}</p> */}
       </div>
       {done && (

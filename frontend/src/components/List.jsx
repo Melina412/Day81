@@ -22,6 +22,11 @@ export default function List({ todos, fetchData }) {
         // wenn ein Todo als erledigt markiert ist, erscheint ein Button mit dem
         man es löschen kann
       </p>
+      <p>
+        // advanced input: man kann vor dem Erstellen eines Todos die Priorität
+        und eine Kategorie festlegen. Diese Eigenschaften werden dann zum
+        Todo-item hinzugefügt und im Backend gespeichert
+      </p>
     </section>
   );
 }

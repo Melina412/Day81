@@ -19,8 +19,9 @@ h1 {
   color: lavender;
 }
 
-.line-through {
+.done {
   text-decoration: line-through;
+  color: gray;
 }
 
 section.todo-form {
@@ -31,6 +32,20 @@ section.todo-form {
     background-color: lavender;
     border: none;
     border-radius: 5px;
+
+    &#advanced,
+    &#sort {
+      margin: 0 5px 0 15px;
+    }
+  }
+  label,
+  h2 {
+    color: lavender;
+    padding: 5px 0;
+  }
+
+  select {
+    margin: 5px;
   }
 }
 
@@ -42,13 +57,13 @@ section.todo-item {
   margin: 10px 0;
   border-radius: 5px;
 
-  &.c {
+  &.low {
     background-color: skyblue;
   }
-  &.b {
+  &.medium {
     background-color: peachpuff;
   }
-  &.a {
+  &.high {
     background-color: palevioletred;
   }
 
@@ -69,6 +84,11 @@ section.todo-item {
       font-size: 20px;
       text-align: center;
       color: black;
+
+      &.done {
+        text-decoration: line-through;
+        color: rgba(0, 0, 0, 0.5);
+      }
     }
   }
   .delete-button {
@@ -77,6 +97,7 @@ section.todo-item {
     padding: 2px 6px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 }
 
