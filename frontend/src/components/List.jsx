@@ -2,6 +2,9 @@
 import Item from './Item';
 
 export default function List({ todos, fetchData }) {
+  //   useEffect(() => {
+  //     sortPriority(props.sort);
+  //   }, [props.sort]);
   return (
     <section className='todo-list'>
       <div>

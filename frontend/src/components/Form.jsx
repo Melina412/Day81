@@ -5,10 +5,12 @@ export default function Form({ fetchData }) {
   const [advanced, setAdvanced] = useState(false);
   const [prio, setPrio] = useState('none');
   const [category, setCategory] = useState('');
+  const [sort, setSort] = useState(false);
 
   const inputRef = useRef();
   const prioRef = useRef();
   const catRef = useRef();
+  const sortRef = useRef();
 
   console.log({ prio });
   console.log({ category });
@@ -46,12 +48,15 @@ export default function Form({ fetchData }) {
     }
   };
 
-  function sortPriority(event) {
-    if (event.target.checked) {
-      //   console.log("prio test");
-      props.setToDos((prev) => {
-        return [...prev.sort((a, b) => a.prio.localeCompare(b.prio))];
-      });
+  function sortPriority() {
+    console.log(sortRef.current.value);
+    if (sortRef.current.value) {
+      const order = { high: 0, medium: 1, low: 2, none: 3 };
+
+      const prioA = priorityOrder[itemA.prio];
+      const prioB = priorityOrder[itemB.prio];
+
+      return prioA - prioB;
     }
   }
 
@@ -89,8 +94,8 @@ export default function Form({ fetchData }) {
               <option value='high'>high</option>
             </select>
 
-            <input type='checkbox' name='sort' id='sort' />
-            {/* onClick={sortPriority} */}
+            <input ref={sortRef} type='checkbox' name='sort' id='sort' />
+
             <label htmlFor='sort'>sort by priority</label>
             <br />
 

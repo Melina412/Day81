@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <h1>Todo-App</h1>
-      <Form fetchData={fetchData} />
+      <Form fetchData={fetchData} setTodos={setTodos} />
       <List todos={todos} fetchData={fetchData} />
     </>
   );
